@@ -1,0 +1,72 @@
+[1mdiff --cc src/gui/MainViewController.java[m
+[1mindex c061492,07a770d..0000000[m
+[1m--- a/src/gui/MainViewController.java[m
+[1m+++ b/src/gui/MainViewController.java[m
+[36m@@@ -1,21 -1,11 +1,30 @@@[m
+  package gui;[m
+  [m
+[32m++<<<<<<< HEAD[m
+[32m +import java.io.IOException;[m
+  import java.net.URL;[m
+  import java.util.ResourceBundle;[m
+  [m
+[32m +import application.Main;[m
+[32m +import gui.util.Alerts;[m
+  import javafx.fxml.FXML;[m
+[32m +import javafx.fxml.FXMLLoader;[m
+  import javafx.fxml.Initializable;[m
+[32m +import javafx.scene.Node;[m
+[32m +import javafx.scene.Scene;[m
+[32m +import javafx.scene.control.Alert.AlertType;[m
+  import javafx.scene.control.MenuItem;[m
+[32m +import javafx.scene.control.ScrollPane;[m
+[32m +import javafx.scene.layout.VBox;[m
+[32m +[m
+[32m++=======[m
+[32m++import java.net.URL;[m
+[32m++import java.util.ResourceBundle;[m
+[32m++[m
+[32m++import javafx.fxml.FXML;[m
+[32m++import javafx.fxml.Initializable;[m
+[32m++import javafx.scene.control.MenuItem;[m
+[32m++>>>>>>> c0c090f9b5c87caf2d6a299b472335e80c809685[m
+  [m
+  public class MainViewController implements Initializable {[m
+  	[m
+[36m@@@ -37,29 -27,11 +46,36 @@@[m
+  	}[m
+  	[m
+  	public void onMenuItemAboutAction() {[m
+[32m++<<<<<<< HEAD[m
+[32m +		loadView("/gui/About.fxml");[m
+[32m++=======[m
+[32m+ 		System.out.println("onMenuItemAboutAction");[m
+[32m++>>>>>>> c0c090f9b5c87caf2d6a299b472335e80c809685[m
+  	}[m
+  [m
+  	@Override[m
+  	public void initialize(URL url, ResourceBundle rb) {[m
+  	}[m
+[32m++<<<<<<< HEAD[m
+[32m +	[m
+[32m +	private synchronized void loadView(String absoluteName) {[m
+[32m +		try {[m
+[32m +			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));[m
+[32m +			VBox newVBox = loader.load();[m
+[32m +			[m
+[32m +			Scene mainScene = Main.getMainScene();[m
+[32m +			VBox mainVBox = (VBox) ((ScrollPane) mainScene.getRoot()).getContent();[m
+[32m +			[m
+[32m +			Node mainMenu = mainVBox.getChildren().get(0);[m
+[32m +			mainVBox.getChildren().clear();[m
+[32m +			mainVBox.getChildren().add(mainMenu);[m
+[32m +			mainVBox.getChildren().addAll(newVBox.getChildren());[m
+[32m +		}[m
+[32m +		catch (IOException e) {[m
+[32m +			Alerts.showAlert("IOException", "Error loading view", e.getMessage(), AlertType.ERROR);[m
+[32m +		}[m
+[32m +	}[m
+[32m++=======[m
+[32m++>>>>>>> c0c090f9b5c87caf2d6a299b472335e80c809685[m
+  [m
+  }[m
